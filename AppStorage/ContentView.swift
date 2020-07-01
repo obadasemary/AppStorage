@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @AppStorage("isDarkMode")
+    private var isDarkMode: Bool = false
+
     var body: some View {
-        Text("Hello, world!").padding()
+        NavigationView{
+            VStack {
+                Text(isDarkMode ? "DARK" : "LIGHT")
+                Toggle(isOn: $isDarkMode, label: {
+                    Text("Select Mode")
+                }).fixedSize()
+            }
+            .navigationTitle("AppStorage")
+        }
     }
 }
 
